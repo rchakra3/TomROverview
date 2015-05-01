@@ -6,3 +6,8 @@ body {
 a {
   color: #00B7FF;
 }
+
+.fixed-ht {
+	height:250px;
+	overflow-y:auto;
+}

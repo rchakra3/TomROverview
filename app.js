@@ -71,7 +71,11 @@ sio.sockets.on('connection', function (socket) {
     socket.on('update message',function(message){
         var ip=message.ip;
         var arr=message.keys.toString().split(',');
-        console.log('New message from:'+ip+':'+arr[0]+'  :'+message.keys)
+
+        var json={ip:ip,
+            keys:message.keys};
+        console.log('New message from:'+ip+':'+arr[0]+'  :'+message.keys);
+        socket.emit('ip_keys_msg', json);
     });
 });
 

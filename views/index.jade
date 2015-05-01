@@ -1,8 +1,26 @@
 extends layout
 
-block content
-  h1= title
-  p Welcome to #{title}
-
 block scripts
-  script(src='/socket.io/socket.io.js')
+  script(src='/javascripts/chatroom.js')
+
+block content
+  div(class="wrap")
+    div(class="container-fluid")
+      h1 Key distribution
+
+      div(id="table_area")
+
+
+  //- div(class="dropdown")
+  //- button(class="btn btn-default dropdown-toggle", type="button", id="dropdownMenu1", data-toggle="dropdown", aria-expanded="true") Choose node
+  //-   span(class="caret")
+
+  //- ul(class="dropdown-menu", role="menu", aria-labelledby="dropdownMenu1")
+  //-   li(role="presentation")
+  //-     a(role="menuitem", tabindex="-1", href="#") Action 1
+  //-   li(role="presentation")
+  //-     a(role="menuitem", tabindex="-1", href="#") Action 2
+  //-   li(role="presentation")
+  //-     a(role="menuitem", tabindex="-1", href="#") Action 3
+  //-   li(role="presentation")
+  //-     a(role="menuitem", tabindex="-1", href="#") Action 4
