@@ -1,5 +1,5 @@
 var server_name = "http://127.0.0.1:3000/";
-var socket = io('/display]');
+var socket = io.listen(server_name);
 console.log('Client: Connecting to server '+server_name);
 
 var handle_keys_msg = function(ip, keys){

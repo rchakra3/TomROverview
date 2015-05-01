@@ -77,7 +77,7 @@ sio.sockets.on('connection', function (socket) {
         var json={ip:ip,
             keys:message.keys};
         console.log('New message from:'+ip+':'+arr[0]+'  :'+message.keys);
-        displayIO.emit('ip_keys_msg', json);
+        sio.broadcast.emit('ip_keys_msg', json);
     });
 });
 
