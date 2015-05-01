@@ -64,6 +64,8 @@ server.listen(port);
 //create Websockets socket.io server object. Attach it to http server
 var sio=require('socket.io').listen(server);
 
+var displayIO = sio.of('/display');
+
 console.log('Listening on port:'+port)
 sio.sockets.on('connection', function (socket) {
     var address = socket.request.connection.remoteAddress
@@ -75,7 +77,7 @@ sio.sockets.on('connection', function (socket) {
         var json={ip:ip,
             keys:message.keys};
         console.log('New message from:'+ip+':'+arr[0]+'  :'+message.keys);
-        socket.emit('ip_keys_msg', json);
+        displayIO.emit('ip_keys_msg', json);
     });
 });
 
