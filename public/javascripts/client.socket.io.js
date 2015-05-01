@@ -3,19 +3,28 @@ var socket = io('/display]');
 console.log('Client: Connecting to server '+server_name);
 
 var handle_keys_msg = function(ip, keys){
-
-	$.each($('#table_area').children("table"), function(){
+	var x = true;
+	$.each($('#table_area').children("div"), function(){
 		if(this.id === ip){
-			this.remove();
+			var temp =this.id;
+			temp='#'+temp;
+			$(temp).children("table").remove();
+			$(temp).append(create_table(ip, keys));
 			//break;
+			x= false;
 		}
 	});
-	var $tbl = create_table(ip, keys);
-	$('#table_area').append($tbl);
+	if(x === true) {
+		var $tbl = create_table(ip, keys);
+		var $div = $('<div></div>').addClass('table-responsive col-md-6 fixed-ht').attr("id", ip);
+		$div.append($tbl);
+		$('#table_area').append($div);
+	}
 };
 
+//should return a table
 var create_table = function(id, keys) {
-	var table = $('<table></table>').addClass('table table-bordered table-striped').attr("id", id);
+	var table = $('<table></table>').addClass('table table-bordered table-striped');
 	var capt = $('<caption></caption>').text('Key details for node '+id);
 	var thead = $('<thead></thead>');
 
@@ -40,10 +49,10 @@ var create_table = function(id, keys) {
 	table.append(thead);
 	table.append(tbody);
 
-	var $div = $('<div></div>').addClass('table-responsive col-md-6 fixed-ht');
-	$div.append(table);
+	//var $div = $('<div></div>').addClass('table-responsive col-md-6 fixed-ht');
+	//$div.append(table);
 
-	return $div;
+	return table;//$div;
 };
 
 socket.on('ip_keys_msg', function(data){
