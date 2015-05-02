@@ -1,7 +1,7 @@
 # TomROverview
 Basic stats for TomR
 
-#Setting up the System:
+##Setting up the System:
 1. Clone https://github.com/rchakra3/TomROverview:
   * git clone "https://github.com/rchakra3/TomROverview"
   * cd TomROverview
